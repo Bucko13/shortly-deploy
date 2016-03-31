@@ -28,7 +28,7 @@ describe('', function() {
       });
   });
 
-  describe('Link creation: ', function() {
+  xdescribe('Link creation: ', function() {
 
     it('Only shortens valid urls, returning a 404 - Not found for invalid urls', function(done) {
       request(app)
