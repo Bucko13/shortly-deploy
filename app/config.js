@@ -5,8 +5,38 @@ var knex = require('knex')({
     filename: path.join(__dirname, '../db/shortly.sqlite')
   }
 });
-var db = require('bookshelf')(knex);
+// var db = require('bookshelf')(knex);
+exports.mongoose = mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/shortly');
+
+var db = mongoose.connection;
+
+db.on('error', function (err) {
+  console.log('connection error', err);
+});
+db.once('open', function () {
+  console.log('connected.');
+
+
+});
+
+
+var Schema = mongoose.Schema;
+exports.userSchema = userSchema = new Schema({
+  username: String,
+  password: String
+}, {timestamps: true});
+
+exports.linksSchema = linksSchema = new Schema({
+  url: String,
+  baseUrl: String,
+  code: String,
+  title: String,
+  visits: Number
+}, {timestamps: true} );
+
+/*
 db.knex.schema.hasTable('urls').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('urls', function (link) {
@@ -35,5 +65,5 @@ db.knex.schema.hasTable('users').then(function(exists) {
     });
   }
 });
-
-module.exports = db;
+*/
+module.exports = mongoose;

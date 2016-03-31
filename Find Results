@@ -1,0 +1,17 @@
+Searching 36 files for "bookshelf"
+
+/Users/student/Desktop/shortly-deploy/package.json:
+   10      "bcrypt-nodejs": "0.0.3",
+   11      "bluebird": "1.0.8",
+   12:     "bookshelf": "^0.9.1",
+   13      "chai": "^1.9.0",
+   14      "ejs": "~0.8.5",
+
+/Users/student/Desktop/shortly-deploy/app/config.js:
+    6    }
+    7  });
+    8: // var db = require('bookshelf')(knex);
+    9  var mongoose = require('mongoose');
+   10  
+
+2 matches across 2 files
