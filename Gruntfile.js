@@ -6,10 +6,14 @@ module.exports = function(grunt) {
       options: {
         separator: ';\n',
       },
-      dist: {
+      js: {
         src: ['public/lib/*.js', 'public/client/*.js'],
         dest: 'public/dist/<%= pkg.name %>.js',
-      }
+      },
+      css: {
+        src: ['public/styles/*.css'],
+        dest: 'public/dist/main.css',
+      } 
 
     },
 
@@ -31,6 +35,11 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      my_target: {
+        files: {
+          'public/dist/<%= pkg.name %>.min.js': ['public/dist/<%= pkg.name %>.js']
+        }
+      }
     },
 
     eslint: {
@@ -104,7 +113,8 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', [ 'clean', 'concat'
+  grunt.registerTask('build', [ 
+    'clean', 'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
