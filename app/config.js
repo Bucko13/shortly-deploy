@@ -28,14 +28,15 @@ exports.userSchema = userSchema = new Schema({
   password: String
 }, {timestamps: true});
 
-exports.linksSchema = linksSchema = new Schema({
+exports.linkSchema = linkSchema = new Schema({
   url: String,
   baseUrl: String,
   code: String,
   title: String,
-  visits: Number
+  visits: {type: Number, default: 0}
 }, {timestamps: true} );
 
+// module.exports = mongoose;
 /*
 db.knex.schema.hasTable('urls').then(function(exists) {
   if (!exists) {
@@ -66,4 +67,3 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 */
-module.exports = mongoose;

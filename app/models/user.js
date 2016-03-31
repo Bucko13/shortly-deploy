@@ -2,7 +2,7 @@ var db = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 
-var User = mongoose.model('User', db.userSchema);
+var User = mongoose.model('User', userSchema);
 
 userSchema.pre('save', function(next) {
   var user = this;
@@ -42,5 +42,5 @@ userSchema.pre('save', function(next) {
   }
 });
 */
-
+//change again and asdf
 module.exports = User;

@@ -22,7 +22,8 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'spec'
+          reporter: 'spec',
+          bail: true
         },
         src: ['test/**/*.js']
       }
@@ -73,12 +74,13 @@ module.exports = function(grunt) {
       scripts: {
         files: [
           'public/client/**/*.js',
-          'public/lib/**/*.js',
-          'public/app/**/*.js'
+          'app/**/*.js',
+          'lib/*.js'
+          // 'app/app/**/*.js',
+
         ],
         tasks: [
-          'concat',
-          'uglify'
+          'build'
         ]
       },
       css: {
@@ -137,6 +139,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [ 
     'clean', 'eslint', 'test', 'concat', 'cssmin', 'uglify'
   ]);
+  grunt.registerTask('watcher', ['watch']);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
