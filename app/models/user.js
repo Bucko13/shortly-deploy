@@ -3,7 +3,6 @@ var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 
 userSchema.methods.comparePassword = function(attemptedPassword, callback) {
-  console.log('hello from inside comparePassword!');
   bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
     callback(isMatch);
   });
@@ -29,26 +28,4 @@ userSchema.pre('save', function(next) {
   });
 });
 
-/*
- db.Model.extend({
-  tableName: 'users',
-  hasTimestamps: true,
-  initialize: function() {
-    this.on('creating', this.hashPassword);
-  },
-  comparePassword: function(attemptedPassword, callback) {
-    bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
-      callback(isMatch);
-    });
-  },
-  hashPassword: function() {
-    var cipher = Promise.promisify(bcrypt.hash);
-    return cipher(this.get('password'), null, null).bind(this)
-      .then(function(hash) {
-        this.set('password', hash);
-      });
-  }
-});
-*/
-//change again and asdf
 module.exports = User;
